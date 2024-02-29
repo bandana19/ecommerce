@@ -6,6 +6,7 @@ import MyContext from '../../state/MyContext'
 
 const ProductDetails = () => {
   const [details, setDetails] = useState({})
+  
  
   const { productId } = useParams()
 

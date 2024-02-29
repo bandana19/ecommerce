@@ -8,6 +8,10 @@ function App() {
   const [cart,setCart]=useState([])
 
 
+
+
+
+
   function addCart(obj) {
     setCart([...cart,obj])
     let tempArr=[...cart]

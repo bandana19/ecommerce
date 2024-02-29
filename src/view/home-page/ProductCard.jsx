@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import Footer from '../../common/Footer'
 import MyContext from '../../state/MyContext'
 
-const ProductCard = () => {
+const ProductCard = ({search}) => {
 
     const [arr, setArr] = useState([])
+    const [old,setOldData]=useState([])
     async function getData() {
         let productData = await fetch('https://dummyjson.com/products')
         let jsonData = await productData.json()
+        setOldData(jsonData.products)
         setArr(jsonData.products)
        
     }
@@ -16,6 +18,16 @@ const ProductCard = () => {
         getData()
     }, [])
 
+    function searchElement(){
+        let keyword=search.toUpperCase()
+        let searchData=old.filter((itm)=>itm.brand.toUpperCase().includes(keyword))
+        setArr(searchData)
+      }
+
+      useEffect(()=>{
+        searchElement()
+      },[search])
+    
     const stateData=useContext(MyContext)
 
     return (

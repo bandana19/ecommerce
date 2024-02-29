@@ -4,11 +4,13 @@ import Footer from '../../common/Footer'
 import ProductCard from './ProductCard'
 
 const HomePage = () => {
+  const [search, setSearch] = useState("")
+
   return (
     <div>
-        <Header/>
-          <ProductCard />
-      <Footer/>
+      <Header setSearch={setSearch} search={search}/>
+      <ProductCard search={search}/>
+      <Footer />
     </div>
   )
 }
